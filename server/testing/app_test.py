@@ -38,7 +38,7 @@ class TestApp:
         with app.app_context():
             response = app.test_client().get('/messages')
             records = Message.query.all()
-
+            print(response)
             for message in response.json:
                 assert(message['id'] in [record.id for record in records])
                 assert(message['body'] in [record.body for record in records])
